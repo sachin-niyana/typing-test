@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Validation</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/index.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="login-box">
+      <form id="loginForm" action="code.html">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <small id="passwordFeedback" class="form-text text-muted text-white"></small>
+        </div>
+        <button type="submit" id="submitBtn" disabled>
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+    const passwordFeedback = document.getElementById('passwordFeedback');
+
+    const fixedPassword = '@abc123'; // Define your fixed password here
+
+    const validatePassword = () => {
+      const password = passwordInput.value;
+
+      const isValid = password === fixedPassword;
+
+      if (isValid) {
+        passwordFeedback.textContent = 'Password is valid.';
+        submitBtn.disabled = false;
+      } else {
+        passwordFeedback.textContent = 'Password is incorrect.';
+        submitBtn.disabled = true;
+      }
+    };
+
+    passwordInput.addEventListener('input', validatePassword);
+  </script>
+</body>
+
+</html>
